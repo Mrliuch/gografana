@@ -85,23 +85,22 @@ type Templating struct {
 		AutoMin string `json:"auto_min"`
 	} `json:"list"`
 }
-
 type Custom struct {
-	AxisLabel         string            `json:"axisLabel"`
-	AxisPlacement     string            `json:"axisPlacement"`
-	BarAlignment      int               `json:"barAlignment"`
-	DrawStyle         string            `json:"drawStyle"`
-	FillOpacity       int               `json:"fillOpacity"`
-	GradientMode      string            `json:"gradientMode"`
-	HideFrom          HideFrom          `json:"hideFrom"`
-	LineInterpolation string            `json:"lineInterpolation"`
-	LineWidth         int               `json:"lineWidth"`
-	PointSize         int               `json:"pointSize"`
-	ScaleDistribution ScaleDistribution `json:"scaleDistribution"`
-	ShowPoints        string            `json:"showPoints"`
-	SpanNulls         bool              `json:"spanNulls"`
-	Stacking          Stacking          `json:"stacking"`
-	ThresholdsStyle   ThresholdsStyle   `json:"thresholdsStyle"`
+	AxisLabel         string            `json:"axisLabel,omitempty"`
+	AxisPlacement     string            `json:"axisPlacement,omitempty"`
+	BarAlignment      int               `json:"barAlignment,omitempty"`
+	DrawStyle         string            `json:"drawStyle,omitempty"`
+	FillOpacity       int               `json:"fillOpacity,omitempty"`
+	GradientMode      string            `json:"gradientMode,omitempty"`
+	HideFrom          HideFrom          `json:"hideFrom,omitempty"`
+	LineInterpolation string            `json:"lineInterpolation,omitempty"`
+	LineWidth         int               `json:"lineWidth,omitempty"`
+	PointSize         int               `json:"pointSize,omitempty"`
+	ScaleDistribution ScaleDistribution `json:"scaleDistribution,omitempty"`
+	ShowPoints        string            `json:"showPoints,omitempty"`
+	SpanNulls         bool              `json:"spanNulls,omitempty"`
+	Stacking          Stacking          `json:"stacking,omitempty"`
+	ThresholdsStyle   ThresholdsStyle   `json:"thresholdsStyle,omitempty"`
 }
 
 type Color struct {
@@ -113,9 +112,28 @@ type Thresholds struct {
 	Steps []Steps `json:"steps"`
 }
 
+type ThresholdsStyle struct {
+	Mode string `json:"mode"`
+}
+
+type HideFrom struct {
+	Legend  bool `json:"legend"`
+	Tooltip bool `json:"tooltip"`
+	Viz     bool `json:"viz"`
+}
+
+type ScaleDistribution struct {
+	Type string `json:"type"`
+}
+
 type Steps struct {
 	Color string `json:"color"`
 	Value int    `json:"value"`
+}
+
+type Stacking struct {
+	Group string `json:"group"`
+	Mode  string `json:"mode"`
 }
 
 type Defaults struct {
