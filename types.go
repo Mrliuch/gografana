@@ -85,65 +85,12 @@ type Templating struct {
 		AutoMin string `json:"auto_min"`
 	} `json:"list"`
 }
+
 type Custom struct {
-	AxisLabel         string            `json:"axisLabel,omitempty"`
-	AxisPlacement     string            `json:"axisPlacement,omitempty"`
-	BarAlignment      int               `json:"barAlignment,omitempty"`
-	DrawStyle         string            `json:"drawStyle,omitempty"`
-	FillOpacity       int               `json:"fillOpacity,omitempty"`
-	GradientMode      string            `json:"gradientMode,omitempty"`
-	HideFrom          HideFrom          `json:"hideFrom,omitempty"`
-	LineInterpolation string            `json:"lineInterpolation,omitempty"`
-	LineWidth         int               `json:"lineWidth,omitempty"`
-	PointSize         int               `json:"pointSize,omitempty"`
-	ScaleDistribution ScaleDistribution `json:"scaleDistribution,omitempty"`
-	ShowPoints        string            `json:"showPoints,omitempty"`
-	SpanNulls         bool              `json:"spanNulls,omitempty"`
-	Stacking          Stacking          `json:"stacking,omitempty"`
-	ThresholdsStyle   ThresholdsStyle   `json:"thresholdsStyle,omitempty"`
 }
-
-type Color struct {
-	Mode string `json:"mode"`
-}
-
-type Thresholds struct {
-	Mode  string  `json:"mode"`
-	Steps []Steps `json:"steps"`
-}
-
-type ThresholdsStyle struct {
-	Mode string `json:"mode"`
-}
-
-type HideFrom struct {
-	Legend  bool `json:"legend"`
-	Tooltip bool `json:"tooltip"`
-	Viz     bool `json:"viz"`
-}
-
-type ScaleDistribution struct {
-	Type string `json:"type"`
-}
-
-type Steps struct {
-	Color string `json:"color"`
-	Value int    `json:"value"`
-}
-
-type Stacking struct {
-	Group string `json:"group"`
-	Mode  string `json:"mode"`
-}
-
 type Defaults struct {
-	Color      Color         `json:"color,omitempty"`
-	Custom     Custom        `json:"custom"`
-	Mappings   []interface{} `json:"mappings,omitempty"`
-	Thresholds Thresholds    `json:"thresholds,omitempty"`
-	Unit       string        `json:"unit,omitempty"`
+	Custom Custom `json:"custom"`
 }
-
 type FieldConfig struct {
 	Defaults Defaults `json:"defaults"`
 	Overrides []interface{} `json:"overrides"`
@@ -332,9 +279,7 @@ Status Codes:
 401 – Unauthorized
 403 – Access denied
 412 – Precondition failed
-
 The 412 status code is used for explaing that you cannot create the dashboard and why. There can be different reasons for this:
-
 The dashboard has been changed by someone else, status=version-mismatch
 A dashboard with the same name in the folder already exists, status=name-exists
 A dashboard with the same uid already exists, status=name-exists
