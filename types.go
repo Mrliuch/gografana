@@ -87,10 +87,45 @@ type Templating struct {
 }
 
 type Custom struct {
+	AxisLabel         string            `json:"axisLabel"`
+	AxisPlacement     string            `json:"axisPlacement"`
+	BarAlignment      int               `json:"barAlignment"`
+	DrawStyle         string            `json:"drawStyle"`
+	FillOpacity       int               `json:"fillOpacity"`
+	GradientMode      string            `json:"gradientMode"`
+	HideFrom          HideFrom          `json:"hideFrom"`
+	LineInterpolation string            `json:"lineInterpolation"`
+	LineWidth         int               `json:"lineWidth"`
+	PointSize         int               `json:"pointSize"`
+	ScaleDistribution ScaleDistribution `json:"scaleDistribution"`
+	ShowPoints        string            `json:"showPoints"`
+	SpanNulls         bool              `json:"spanNulls"`
+	Stacking          Stacking          `json:"stacking"`
+	ThresholdsStyle   ThresholdsStyle   `json:"thresholdsStyle"`
 }
+
+type Color struct {
+	Mode string `json:"mode"`
+}
+
+type Thresholds struct {
+	Mode  string  `json:"mode"`
+	Steps []Steps `json:"steps"`
+}
+
+type Steps struct {
+	Color string `json:"color"`
+	Value int    `json:"value"`
+}
+
 type Defaults struct {
-	Custom Custom `json:"custom"`
+	Color      Color         `json:"color,omitempty"`
+	Custom     Custom        `json:"custom"`
+	Mappings   []interface{} `json:"mappings,omitempty"`
+	Thresholds Thresholds    `json:"thresholds,omitempty"`
+	Unit       string        `json:"unit,omitempty"`
 }
+
 type FieldConfig struct {
 	Defaults Defaults `json:"defaults"`
 	Overrides []interface{} `json:"overrides"`
